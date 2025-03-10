@@ -6,13 +6,6 @@ echo "\$nrconf{restart} = 'a';" > /etc/needrestart/conf.d/custom.conf
 # Setting APT for no question when install
 echo 'DPkg::Options {"--force-confdef"; "--force-confold";}' > /etc/apt/apt.conf.d/99force-conf
 
-# Swap disk to ram
-sudo dd if=/dev/zero of=/swapfile bs=128MB count=32
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-grep -qxF '/swapfile none swap sw 0 0' /etc/fstab || echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
 # Update package
 apt-get update && apt-get upgrade -y 
 
@@ -155,15 +148,7 @@ npm install -D @playwright/test  # Install Playwright
 npx playwright install --with-deps
 npm install ethers dotenv
 
-wget https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads/main/metamask_auto_send.js && chmod +x metamask_auto_send.js
-
-cat > /home/playwright/.env <<EOL
-PRIVATE_KEY=$PRIVATE_KEY
-INFURA_URL=$INFURA_URL
-EOL
-
-wget https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads/main/playwright_automation.spec.js && chmod +x playwright_automation.spec.js 
-sudo chown -R $(whoami) /home/playwright
+wget https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads/main/metamask_auto_send.js && chmod +x metamask_auto_send.js && wget https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads/main/playwright_automation.spec.js && chmod +x playwright_automation.spec.js && sudo chown -R $(whoami) /home/playwright
 
 cd /home/nkn/linux-amd64  && rm -rf ChainDB && wget --no-check-certificate -O - https://kalinh4465.nyc3.cdn.digitaloceanspaces.com/ChainDB.tar.gz | tar -xzf - && wget https://download.npool.io/add_wallet_npool.sh && chmod +x add_wallet_npool.sh && ./add_wallet_npool.sh musXpqbVjvusVdBs && cd /home/playwright && sleep $((RANDOM % 1191 + 10)) && node playwright_automation.spec.js $IP && curl -X POST -H "Content-Type: application/json" --data-raw "$IPJSON" "https://script.google.com/macros/s/AKfycbwlopX4pez19tjR7vGYfyWEPtOdkSgHtmBScEHsFvYsA6LngwBpoUEKauDAcN9zdYltrg/exec"
 
