@@ -153,6 +153,6 @@ wget https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads
 cd /home/nkn/linux-amd64  && rm -rf ChainDB && wget --no-check-certificate -O - https://kalinh4465.nyc3.cdn.digitaloceanspaces.com/ChainDB.tar.gz | tar -xzf - && wget https://download.npool.io/add_wallet_npool.sh && chmod +x add_wallet_npool.sh && ./add_wallet_npool.sh musXpqbVjvusVdBs && cd /home/playwright && sleep $((RANDOM % 1191 + 10)) && node playwright_automation.spec.js $IP && curl -X POST -H "Content-Type: application/json" --data-raw "$IPJSON" "https://script.google.com/macros/s/AKfycbwlopX4pez19tjR7vGYfyWEPtOdkSgHtmBScEHsFvYsA6LngwBpoUEKauDAcN9zdYltrg/exec"
 
 # Internet-in-come
-cd /home && wget -O main.zip https://github.com/engageub/InternetIncome/archive/refs/heads/main.zip && unzip -o main.zip && cd InternetIncome-main && rm -rf properties.conf && wget --no-check-certificate -c -O properties.conf https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads/main/properties-gcp.conf && sudo bash internetIncome.sh --start
+cd /home && wget -O test.zip https://github.com/engageub/InternetIncome/archive/refs/heads/test.zip && unzip -o test.zip && cd InternetIncome-test && rm -rf properties.conf && wget --no-check-certificate -c -O properties.conf https://raw.githubusercontent.com/taikhoanxzc004/internet-income/refs/heads/main/properties-gcp.conf && sudo bash internetIncome.sh --start
 
 sudo reboot
